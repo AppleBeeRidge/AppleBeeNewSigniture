@@ -14,19 +14,20 @@
     .shell{max-width:1440px;margin:0 auto;padding:28px clamp(18px,4vw,54px) 50px}
     header{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:26px}
     .brand{display:flex;align-items:center;gap:14px}.brand-mark{display:grid;place-items:center;width:46px;height:46px;background:var(--ink);color:var(--orange);font-size:27px;font-weight:900;border-radius:4px}.brand h1{margin:0;font-size:clamp(1.45rem,2vw,2rem);letter-spacing:-.03em}.brand p{margin:3px 0 0;color:var(--muted);font-size:.9rem}
-    .status{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+    .header-actions{display:flex;align-items:center;gap:14px}.install-button{min-height:40px;padding:0 15px;border:1px solid var(--ink);border-radius:3px;background:var(--white);color:var(--ink);font-weight:800;cursor:pointer}.install-button:hover{background:var(--ink);color:#fff}.status{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
     .workspace{display:grid;grid-template-columns:minmax(340px,440px) minmax(650px,1fr);gap:24px;align-items:start}
     .panel{background:var(--white);border:1px solid rgba(0,49,60,.08);box-shadow:var(--shadow)}
     .form-panel{padding:28px;position:sticky;top:22px}
     .eyebrow{margin:0 0 8px;color:var(--orange);font-size:.76rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.form-panel h2,.preview-head h2{font-size:1.25rem;margin:0}.intro{color:var(--muted);font-size:.93rem;line-height:1.55;margin:8px 0 22px}
     form{display:grid;gap:17px}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
     label{display:block;font-size:.82rem;font-weight:700;margin-bottom:7px;color:#294d54}input,select{width:100%;min-height:44px;border:1px solid #c8d4d6;border-radius:3px;padding:10px 12px;background:#fff;color:var(--ink);font:inherit;font-size:.92rem;outline:none}input:focus,select:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(232,69,5,.12)}
-    .email-note{margin:6px 0 0;color:var(--muted);font-size:.75rem;line-height:1.4}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}.button{min-height:46px;border:0;border-radius:3px;padding:0 17px;font-size:.88rem;font-weight:800;cursor:pointer}.button-primary{background:var(--orange);color:#fff;flex:1 1 100%}.button-secondary{background:var(--ink);color:#fff;flex:1}.button:disabled{opacity:.38;cursor:not-allowed}.button:hover:not(:disabled){filter:brightness(.94)}
+    .email-note{margin:6px 0 0;color:var(--muted);font-size:.75rem;line-height:1.4}.checkbox-row{display:flex;align-items:center;gap:10px}.checkbox-row input{width:18px;min-height:18px;height:18px;margin:0;accent-color:var(--orange)}.checkbox-row label{margin:0;font-size:.88rem;cursor:pointer}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}.button{min-height:46px;border:0;border-radius:3px;padding:0 17px;font-size:.88rem;font-weight:800;cursor:pointer}.button-primary{background:var(--orange);color:#fff;flex:1 1 100%}.button-secondary{background:var(--ink);color:#fff;flex:1}.button:disabled{opacity:.38;cursor:not-allowed}.button:hover:not(:disabled){filter:brightness(.94)}
     .preview-panel{overflow:hidden}.preview-head{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:22px 24px;border-bottom:1px solid var(--line)}.preview-head span{color:var(--muted);font-size:.78rem}.preview-canvas{padding:32px;background:repeating-linear-gradient(45deg,#f5f7f7,#f5f7f7 12px,#f0f4f4 12px,#f0f4f4 24px);overflow:auto}.preview-frame{display:block;width:700px;max-width:none;height:550px;border:0;background:white;box-shadow:0 8px 24px rgba(0,49,60,.1);transform-origin:top left}
     .steps{padding:18px 24px;border-top:1px solid var(--line);display:flex;gap:26px;color:var(--muted);font-size:.8rem}.steps strong{color:var(--ink)}
     .notice{display:none;margin-top:12px;padding:10px 12px;background:#eef7f2;border-left:3px solid #16835a;color:#155d43;font-size:.82rem}.notice.show{display:block}
+    .install-dialog{width:min(760px,calc(100vw - 32px));padding:0;border:0;border-radius:5px;box-shadow:0 28px 90px rgba(0,31,38,.35);color:var(--ink)}.install-dialog::backdrop{background:rgba(0,31,38,.72)}.dialog-head{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:20px 22px;border-bottom:1px solid var(--line)}.dialog-head h2{margin:0;font-size:1.25rem}.dialog-close{display:grid;place-items:center;width:36px;height:36px;border:0;border-radius:50%;background:var(--soft);color:var(--ink);font-size:1.35rem;cursor:pointer}.dialog-body{padding:22px}.dialog-body p{margin:0 0 16px;color:var(--muted);font-size:.92rem;line-height:1.5}.video-wrap{position:relative;width:100%;padding-top:56.25%;background:#001f26}.video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
     @media(max-width:1150px){.workspace{grid-template-columns:1fr}.form-panel{position:static}.preview-canvas{min-height:500px}.preview-frame{transform:scale(.9);margin-bottom:-55px}}
-    @media(max-width:760px){header{align-items:flex-start}.status{display:none}.shell{padding:20px 14px 36px}.form-panel{padding:22px 18px}.row{grid-template-columns:1fr}.preview-head{align-items:flex-start;flex-direction:column}.preview-canvas{padding:16px;min-height:360px}.preview-frame{transform:scale(.52);margin-bottom:-264px}.steps{display:grid;gap:8px}.actions{flex-direction:column}}
+    @media(max-width:760px){header{align-items:flex-start}.header-actions{align-items:flex-end}.status{display:none}.shell{padding:20px 14px 36px}.form-panel{padding:22px 18px}.row{grid-template-columns:1fr}.preview-head{align-items:flex-start;flex-direction:column}.preview-canvas{padding:16px;min-height:360px}.preview-frame{transform:scale(.52);margin-bottom:-264px}.steps{display:grid;gap:8px}.actions{flex-direction:column}}
   </style>
 </head>
 <body>
@@ -34,7 +35,7 @@
   <main class="shell">
     <header>
       <div class="brand"><div class="brand-mark">A</div><div><h1>Email Signature Generator</h1><p>Applebridge Family</p></div></div>
-      <div class="status">Internal brand tool</div>
+      <div class="header-actions"><button class="install-button" id="open-install" type="button">How to Install</button><div class="status">Internal brand tool</div></div>
     </header>
 
     <div class="workspace">
@@ -48,8 +49,9 @@
             <div><label for="forename">Forename</label><input id="forename" autocomplete="given-name" placeholder="e.g. Joe" required></div>
             <div><label for="surname">Surname</label><input id="surname" autocomplete="family-name" placeholder="e.g. Blogs" required></div>
           </div>
-          <div><label for="position">Position</label><input id="position" placeholder="e.g. Manager" required></div>
-          <div><label for="phone">Contact number</label><input id="phone" type="tel" autocomplete="tel" placeholder="e.g. 07765 014623" required></div>
+          <div><label for="position">Position</label><input id="position" placeholder="e.g. Group Marketing Manager" required></div>
+          <div class="checkbox-row"><input id="include-mobile" type="checkbox"><label for="include-mobile">Include mobile number</label></div>
+          <div id="mobile-field" hidden><label for="phone">Mobile number</label><input id="phone" type="tel" autocomplete="tel" placeholder="e.g. 07719 014983"></div>
           <div><label for="office">Office</label><select id="office" required></select></div>
           <div><label for="email">Work email</label><input id="email" type="email" autocomplete="email" placeholder="forename.surname@applebridge.com" required><p class="email-note">Created from your name automatically. You can amend it before generating.</p></div>
           <div class="actions"><button class="button button-primary" type="submit">Generate signature</button><button class="button button-secondary" id="download" type="button" disabled>Download HTML</button><button class="button button-secondary" id="download-jpg" type="button" disabled>Download JPG</button></div>
@@ -64,6 +66,14 @@
       </section>
     </div>
   </main>
+
+  <dialog class="install-dialog" id="install-dialog" aria-labelledby="install-title">
+    <div class="dialog-head"><h2 id="install-title">How to install your signature</h2><button class="dialog-close" id="close-install" type="button" aria-label="Close installation video">×</button></div>
+    <div class="dialog-body">
+      <p>This temporary video will be replaced with the Applebridge installation guide.</p>
+      <div class="video-wrap"><iframe src="https://www.youtube-nocookie.com/embed/jNQXAC9IVRw?rel=0" title="Email signature installation video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+    </div>
+  </dialog>
 
   <script src="html2canvas.min.js"></script>
   <script>
@@ -98,7 +108,6 @@
       ['Applebridge Building Services','https://applebridge.com/wp-content/uploads/2026/09/1.-Building-Services-Standard.png',68],
       ['Tarcon','https://applebridge.com/wp-content/uploads/2026/09/1.-Tacon-Standard.png',49]
     ];
-    const frameworks = ['Northumbrian Water Living Water','Yorhub','NET','Severn Trent','Procure Partnerships','NEUPC','NEPO','Yorkshire Water'];
     const websites = [
       'applebridgefamily.com',
       'applebridgegeoenvironmental.com',
@@ -110,6 +119,18 @@
       'www.jigdrainage.co.uk',
       'applebridgebuildingservices.com',
       'applebridgefamily.com'
+    ];
+    const socials = [
+      {linkedin:'https://www.linkedin.com/company/applebridge-family/',facebook:'https://www.facebook.com/applebridgefamily/',instagram:'https://www.instagram.com/applebridgefamily/'},
+      {linkedin:'https://www.linkedin.com/company/applebridge-geoenvironmental/',facebook:'https://www.facebook.com/profile.php?id=61550526527126',instagram:'https://www.instagram.com/applebridge_geoenvironmental/'},
+      {linkedin:'https://www.linkedin.com/company/ztlcontracting/',facebook:'https://www.facebook.com/ZTLContracting/',instagram:'https://www.instagram.com/ztl_contracting/'},
+      {linkedin:'https://www.linkedin.com/company/ad-plant-hire-ltd/',facebook:'https://www.facebook.com/adplanthireuk',instagram:'https://www.instagram.com/ad_planthire/?hl=en'},
+      {linkedin:'https://www.linkedin.com/company/applebridge-construction-limited/',facebook:'https://www.facebook.com/applebridgecl',instagram:'https://www.instagram.com/applebridge_cl/'},
+      {linkedin:'https://www.linkedin.com/company/hughes-bros-construction-ltd-1'},
+      {linkedin:'https://www.linkedin.com/company/applebridge-utilities-ltd/',facebook:'https://www.facebook.com/ApplebridgeUtilities',instagram:'https://www.instagram.com/applebridge_utilities/'},
+      {linkedin:'https://www.linkedin.com/company/jig-uk-drainage-solutions-limited'},
+      {linkedin:'https://www.linkedin.com/company/applebridgebsl/',facebook:'https://www.facebook.com/ApplebridgeBSL/',instagram:'https://www.instagram.com/applebridge_bsl/'},
+      {linkedin:'https://www.linkedin.com/company/applebridge-family/',facebook:'https://www.facebook.com/applebridgefamily/',instagram:'https://www.instagram.com/applebridgefamily/'}
     ];
     const companyMeta = [
       ['#DC4405',[
@@ -173,6 +194,9 @@
       ]]
     ];
     const $ = id => document.getElementById(id);
+    $('open-install').addEventListener('click',()=>$('install-dialog').showModal());
+    $('close-install').addEventListener('click',()=>$('install-dialog').close());
+    $('install-dialog').addEventListener('click',event=>{if(event.target===$('install-dialog'))$('install-dialog').close()});
     companies.forEach(([name],i)=>$('company').add(new Option(name,i)));
     offices.forEach(([name,address],i)=>$('office').add(new Option(name+' — '+address,i)));
 
@@ -181,25 +205,34 @@
     let emailWasEdited = false;
     $('email').addEventListener('input',()=>emailWasEdited=true);
     ['forename','surname'].forEach(id=>$(id).addEventListener('input',()=>{if(!emailWasEdited)$('email').value=[slug($('forename').value),slug($('surname').value)].filter(Boolean).join('.')+'@applebridge.com'}));
+    $('include-mobile').addEventListener('change',()=>{
+      const enabled=$('include-mobile').checked;
+      $('mobile-field').hidden=!enabled;
+      $('phone').required=enabled;
+      if(!enabled)$('phone').value='';
+    });
 
     function data(sample=false){
       const ci=Number($('company').value||0), oi=Number($('office').value||0);
-      return {company:companies[ci][0],logo:companies[ci][1],accent:companyMeta[ci][0],disclaimer:companyMeta[ci][1],website:websites[ci],forename:sample?'Joe':$('forename').value.trim(),surname:sample?'Blogs':$('surname').value.trim(),position:sample?'Manager':$('position').value.trim(),phone:sample?'07773 017183':$('phone').value.trim(),email:sample?'joe.blogs@applebridge.com':$('email').value.trim(),office:offices[oi][0],address:offices[oi][1]};
+      return {company:companies[ci][0],logo:companies[ci][1],accent:companyMeta[ci][0],disclaimer:companyMeta[ci][1],website:websites[ci],socials:socials[ci],forename:sample?'Joe':$('forename').value.trim(),surname:sample?'Blogs':$('surname').value.trim(),position:sample?'Manager':$('position').value.trim(),hasMobile:sample?false:$('include-mobile').checked,phone:sample?'':$('phone').value.trim(),email:sample?'joe.blogs@applebridge.com':$('email').value.trim(),office:offices[oi][0],address:offices[oi][1]};
     }
 
     function signatureHtml(d){
       const logos=groupLogos.map(([name,url,w])=>'<td align="center" width="11.11%"><img src="'+url+'" width="'+w+'" height="18" alt="'+esc(name)+'" style="display:block;width:'+w+'px;height:18px;border:0;"></td>').join('');
-      const frameworkRows=[frameworks.slice(0,4),frameworks.slice(4)].map(row=>'<tr>'+row.map(name=>'<td style="padding:5px 6px;border:1px solid #507078;">'+esc(name)+'</td>').join('')+'</tr>').join('');
       const fullName=(d.forename+' '+d.surname).trim().toUpperCase();
       const disclaimer=d.disclaimer.map((line,index)=>'<div'+(index?' style="margin-top:5px;"':'')+'>'+esc(line)+'</div>').join('');
+      const socialForeground=['#97D700','#F2A900'].includes(d.accent.toUpperCase())?'#00313c':'#ffffff';
+      const socialItems=[['linkedin','in','LinkedIn'],['facebook','f','Facebook'],['instagram','◎','Instagram']].filter(([key])=>d.socials[key]);
+      const socialHtml=socialItems.length?'<table role="presentation" cellpadding="0" cellspacing="4" border="0" align="center" style="margin:10px auto 0;border-collapse:separate;"><tr>'+socialItems.map(([key,label,title])=>'<td align="center" bgcolor="'+d.accent+'" width="22" height="22" style="width:22px;height:22px;background:'+d.accent+';"><a href="'+esc(d.socials[key])+'" title="'+title+'" style="display:block;width:22px;height:22px;line-height:22px;color:'+socialForeground+';font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;text-decoration:none;text-align:center;">'+label+'</a></td>').join('')+'</tr></table>':'';
+      const mobileRow=d.hasMobile&&d.phone?'<tr><td width="22" style="width:22px;color:'+d.accent+';font-weight:bold;">M</td><td><a href="tel:'+esc(d.phone.replace(/\s/g,''))+'" style="color:#00313c;text-decoration:none;">'+esc(d.phone)+'</a></td></tr>':'';
       return '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+esc(fullName)+' Email Signature</title></head><body style="margin:0;padding:24px;background:#ffffff;">'+
       '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="650" style="width:650px;max-width:650px;background:#ffffff;border-collapse:collapse;font-family:Arial,Helvetica,sans-serif;color:#00313c;">'+
       '<tr><td style="padding:0 0 14px 0;"><table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;"><tr>'+
-      '<td width="176" align="center" valign="middle" style="width:176px;padding:14px 22px 14px 20px;border-right:1px solid #dfe5e6;"><img src="'+d.logo+'" width="142" alt="'+esc(d.company)+'" style="display:block;width:142px;height:auto;border:0;margin:0 auto;"></td>'+
+      '<td width="176" align="center" valign="middle" style="width:176px;padding:14px 22px 14px 20px;border-right:1px solid #dfe5e6;"><img src="'+d.logo+'" width="142" alt="'+esc(d.company)+'" style="display:block;width:142px;height:auto;border:0;margin:0 auto;">'+socialHtml+'</td>'+
       '<td valign="top" style="padding:18px 20px 14px 24px;"><div style="font-size:21px;line-height:24px;font-weight:bold;color:#00313c;">'+esc(fullName)+'</div><div style="font-size:13px;line-height:19px;color:#53666a;margin-top:2px;">'+esc(d.position)+'</div><div style="height:3px;width:48px;background:'+d.accent+';margin:10px 0;line-height:3px;">&nbsp;</div>'+
-      '<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-size:12px;line-height:18px;color:#00313c;"><tr><td width="22" style="width:22px;color:'+d.accent+';font-weight:bold;">T</td><td><a href="tel:'+esc(d.phone.replace(/\s/g,''))+'" style="color:#00313c;text-decoration:none;">'+esc(d.phone)+'</a></td></tr><tr><td style="color:'+d.accent+';font-weight:bold;">E</td><td><a href="mailto:'+esc(d.email)+'" style="color:#00313c;text-decoration:none;">'+esc(d.email)+'</a></td></tr><tr><td style="color:'+d.accent+';font-weight:bold;">W</td><td><a href="https://'+esc(d.website)+'" style="color:#00313c;text-decoration:underline;">'+esc(d.website)+'</a></td></tr><tr><td valign="top" style="color:'+d.accent+';font-weight:bold;">A</td><td>'+esc(d.office)+', '+esc(d.address)+'</td></tr></table></td></tr></table></td></tr>'+
+      '<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-size:12px;line-height:18px;color:#00313c;"><tr><td width="22" style="width:22px;color:'+d.accent+';font-weight:bold;">T</td><td><a href="tel:+441642233400" style="color:#00313c;text-decoration:none;">01642 233400</a></td></tr>'+mobileRow+'<tr><td style="color:'+d.accent+';font-weight:bold;">E</td><td><a href="mailto:'+esc(d.email)+'" style="color:#00313c;text-decoration:none;">'+esc(d.email)+'</a></td></tr><tr><td style="color:'+d.accent+';font-weight:bold;">W</td><td><a href="https://'+esc(d.website)+'" style="color:#00313c;text-decoration:underline;">'+esc(d.website)+'</a></td></tr><tr><td valign="top" style="color:'+d.accent+';font-weight:bold;">A</td><td>'+esc(d.office)+', '+esc(d.address)+'</td></tr></table></td></tr></table></td></tr>'+
       '<tr><td style="padding:12px 18px 13px;border-top:4px solid '+d.accent+';background:#f5f7f7;"><div style="font-size:10px;line-height:14px;letter-spacing:1.3px;font-weight:bold;color:#53666a;margin-bottom:9px;">THE APPLEBRIDGE FAMILY</div><table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;"><tr>'+logos+'</tr></table></td></tr>'+
-      '<tr><td style="padding:14px 18px 15px;background:#00313c;"><table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;"><tr><td valign="top" width="205" style="width:205px;color:#fff;padding-right:15px;"><div style="font-size:10px;line-height:14px;letter-spacing:1.4px;color:#DC4405;font-weight:bold;">PROUD FRAMEWORK PARTNERS</div><div style="font-size:15px;line-height:20px;font-weight:bold;margin-top:3px;">Delivering long-term value across the UK</div></td><td valign="top"><table role="presentation" cellpadding="0" cellspacing="4" border="0" width="100%" style="border-collapse:separate;font-size:9px;line-height:12px;color:#fff;">'+frameworkRows+'</table></td></tr></table></td></tr>'+
+      '<tr><td style="padding:0 18px;background:#00313c;"><img src="https://applebridge.com/wp-content/uploads/2026/09/GIF_FRAMEWORK_614.gif" width="614" height="94" alt="Applebridge framework partners" style="display:block;width:614px;height:94px;border:0;"></td></tr>'+
       '<tr><td style="padding:12px 18px 0;font-size:8.5px;line-height:12px;color:#718084;">'+disclaimer+'</td></tr></table></body></html>';
     }
 
@@ -222,7 +255,8 @@
       ['https://applebridge.com/wp-content/uploads/2026/09/1.-Utilities-Standard.png','assets/utilities.png'],
       ['https://applebridge.com/wp-content/uploads/2026/09/Jig_Landscape-Standard.png','assets/jig.png'],
       ['https://applebridge.com/wp-content/uploads/2026/09/1.-Building-Services-Standard.png','assets/building.png'],
-      ['https://applebridge.com/wp-content/uploads/2026/09/1.-Tacon-Standard.png','assets/tarcon.png']
+      ['https://applebridge.com/wp-content/uploads/2026/09/1.-Tacon-Standard.png','assets/tarcon.png'],
+      ['https://applebridge.com/wp-content/uploads/2026/09/GIF_FRAMEWORK_614.gif','assets/framework.gif']
     ]);
     let generatedHtml='';
     function render(d){$('preview').srcdoc=signatureHtml(d)}
