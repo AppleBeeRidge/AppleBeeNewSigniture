@@ -45,11 +45,11 @@
         <form id="signature-form">
           <div><label for="company">Company</label><select id="company" required></select></div>
           <div class="row">
-            <div><label for="forename">Forename</label><input id="forename" autocomplete="given-name" placeholder="e.g. Joe" required></div>
-            <div><label for="surname">Surname</label><input id="surname" autocomplete="family-name" placeholder="e.g. Blogs" required></div>
+            <div><label for="forename">Forename</label><input id="forename" autocomplete="given-name" placeholder="e.g. Callum" required></div>
+            <div><label for="surname">Surname</label><input id="surname" autocomplete="family-name" placeholder="e.g. Cowham" required></div>
           </div>
-          <div><label for="position">Position</label><input id="position" placeholder="e.g. Manager" required></div>
-          <div><label for="phone">Contact number</label><input id="phone" type="tel" autocomplete="tel" placeholder="e.g. 07879 017653" required></div>
+          <div><label for="position">Position</label><input id="position" placeholder="e.g. Group Marketing Manager" required></div>
+          <div><label for="phone">Contact number</label><input id="phone" type="tel" autocomplete="tel" placeholder="e.g. 07719 014983" required></div>
           <div><label for="office">Office</label><select id="office" required></select></div>
           <div><label for="email">Work email</label><input id="email" type="email" autocomplete="email" placeholder="forename.surname@applebridge.com" required><p class="email-note">Created from your name automatically. You can amend it before generating.</p></div>
           <div class="actions"><button class="button button-primary" type="submit">Generate signature</button><button class="button button-secondary" id="download" type="button" disabled>Download HTML</button><button class="button button-secondary" id="download-jpg" type="button" disabled>Download JPG</button></div>
@@ -184,7 +184,7 @@
 
     function data(sample=false){
       const ci=Number($('company').value||0), oi=Number($('office').value||0);
-      return {company:companies[ci][0],logo:companies[ci][1],accent:companyMeta[ci][0],disclaimer:companyMeta[ci][1],website:websites[ci],forename:sample?'Joe':$('forename').value.trim(),surname:sample?'Blogs':$('surname').value.trim(),position:sample?'Manager':$('position').value.trim(),phone:sample?'07349 075383':$('phone').value.trim(),email:sample?'joe.blogs@applebridge.com':$('email').value.trim(),office:offices[oi][0],address:offices[oi][1]};
+      return {company:companies[ci][0],logo:companies[ci][1],accent:companyMeta[ci][0],disclaimer:companyMeta[ci][1],website:websites[ci],forename:sample?'Callum':$('forename').value.trim(),surname:sample?'Cowham':$('surname').value.trim(),position:sample?'Group Marketing Manager':$('position').value.trim(),phone:sample?'07719 014983':$('phone').value.trim(),email:sample?'callum.cowham@applebridge.com':$('email').value.trim(),office:offices[oi][0],address:offices[oi][1]};
     }
 
     function signatureHtml(d){
