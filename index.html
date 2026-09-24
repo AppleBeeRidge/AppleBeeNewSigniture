@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Generate a consistent Applebridge Family email signature.">
+  <title>Applebridge Signature Generator</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2300313c'/%3E%3Cpath d='M14 48 28 14h8l14 34h-9l-3-8H26l-3 8Zm15-16h6l-3-9Z' fill='%23e84505'/%3E%3C/svg%3E">
+  <style>
+    :root{--ink:#00313c;--orange:#e84505;--muted:#607277;--line:#dce4e5;--soft:#f2f5f5;--white:#fff;--shadow:0 18px 48px rgba(0,49,60,.12)}
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(145deg,#eef3f3 0%,#f7f8f8 55%,#e9efef 100%);color:var(--ink);font-family:Arial,Helvetica,sans-serif;min-height:100vh}
+    .topbar{height:7px;background:var(--orange)}
+    .shell{max-width:1440px;margin:0 auto;padding:28px clamp(18px,4vw,54px) 50px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:26px}
+    .brand{display:flex;align-items:center;gap:14px}.brand-mark{display:grid;place-items:center;width:46px;height:46px;background:var(--ink);color:var(--orange);font-size:27px;font-weight:900;border-radius:4px}.brand h1{margin:0;font-size:clamp(1.45rem,2vw,2rem);letter-spacing:-.03em}.brand p{margin:3px 0 0;color:var(--muted);font-size:.9rem}
+    .status{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+    .workspace{display:grid;grid-template-columns:minmax(340px,440px) minmax(650px,1fr);gap:24px;align-items:start}
+    .panel{background:var(--white);border:1px solid rgba(0,49,60,.08);box-shadow:var(--shadow)}
+    .form-panel{padding:28px;position:sticky;top:22px}
+    .eyebrow{margin:0 0 8px;color:var(--orange);font-size:.76rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.form-panel h2,.preview-head h2{font-size:1.25rem;margin:0}.intro{color:var(--muted);font-size:.93rem;line-height:1.55;margin:8px 0 22px}
+    form{display:grid;gap:17px}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    label{display:block;font-size:.82rem;font-weight:700;margin-bottom:7px;color:#294d54}input,select{width:100%;min-height:44px;border:1px solid #c8d4d6;border-radius:3px;padding:10px 12px;background:#fff;color:var(--ink);font:inherit;font-size:.92rem;outline:none}input:focus,select:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(232,69,5,.12)}
+    .email-note{margin:6px 0 0;color:var(--muted);font-size:.75rem;line-height:1.4}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}.button{min-height:46px;border:0;border-radius:3px;padding:0 17px;font-size:.88rem;font-weight:800;cursor:pointer}.button-primary{background:var(--orange);color:#fff;flex:1 1 100%}.button-secondary{background:var(--ink);color:#fff;flex:1}.button:disabled{opacity:.38;cursor:not-allowed}.button:hover:not(:disabled){filter:brightness(.94)}
+    .preview-panel{overflow:hidden}.preview-head{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:22px 24px;border-bottom:1px solid var(--line)}.preview-head span{color:var(--muted);font-size:.78rem}.preview-canvas{padding:32px;background:repeating-linear-gradient(45deg,#f5f7f7,#f5f7f7 12px,#f0f4f4 12px,#f0f4f4 24px);overflow:auto}.preview-frame{display:block;width:700px;max-width:none;height:550px;border:0;background:white;box-shadow:0 8px 24px rgba(0,49,60,.1);transform-origin:top left}
+    .steps{padding:18px 24px;border-top:1px solid var(--line);display:flex;gap:26px;color:var(--muted);font-size:.8rem}.steps strong{color:var(--ink)}
+    .notice{display:none;margin-top:12px;padding:10px 12px;background:#eef7f2;border-left:3px solid #16835a;color:#155d43;font-size:.82rem}.notice.show{display:block}
+    @media(max-width:1150px){.workspace{grid-template-columns:1fr}.form-panel{position:static}.preview-canvas{min-height:500px}.preview-frame{transform:scale(.9);margin-bottom:-55px}}
+    @media(max-width:760px){header{align-items:flex-start}.status{display:none}.shell{padding:20px 14px 36px}.form-panel{padding:22px 18px}.row{grid-template-columns:1fr}.preview-head{align-items:flex-start;flex-direction:column}.preview-canvas{padding:16px;min-height:360px}.preview-frame{transform:scale(.52);margin-bottom:-264px}.steps{display:grid;gap:8px}.actions{flex-direction:column}}
+  </style>
+</head>
+<body>
+  <div class="topbar"></div>
+  <main class="shell">
+    <header>
+      <div class="brand"><div class="brand-mark">A</div><div><h1>Email Signature Generator</h1><p>Applebridge Family</p></div></div>
+      <div class="status">Internal brand tool</div>
+    </header>
+
+    <div class="workspace">
+      <section class="panel form-panel" aria-labelledby="details-title">
+        <p class="eyebrow">Signature details</p>
+        <h2 id="details-title">Create your footer</h2>
+        <p class="intro">Choose your company and office, then enter your contact details. Your company logo and signature will be prepared automatically.</p>
+        <form id="signature-form">
+          <div><label for="company">Company</label><select id="company" required></select></div>
+          <div class="row">
+            <div><label for="forename">Forename</label><input id="forename" autocomplete="given-name" placeholder="e.g. Callum" required></div>
+            <div><label for="surname">Surname</label><input id="surname" autocomplete="family-name" placeholder="e.g. Cowham" required></div>
+          </div>
+          <div><label for="position">Position</label><input id="position" placeholder="e.g. Group Marketing Manager" required></div>
+          <div><label for="phone">Contact number</label><input id="phone" type="tel" autocomplete="tel" placeholder="e.g. 07719 014983" required></div>
+          <div><label for="office">Office</label><select id="office" required></select></div>
+          <div><label for="email">Work email</label><input id="email" type="email" autocomplete="email" placeholder="forename.surname@applebridge.com" required><p class="email-note">Created from your name automatically. You can amend it before generating.</p></div>
+          <div class="actions"><button class="button button-primary" type="submit">Generate signature</button><button class="button button-secondary" id="download" type="button" disabled>Download HTML</button><button class="button button-secondary" id="download-jpg" type="button" disabled>Download JPG</button></div>
+          <div class="notice" id="notice" role="status">Your signature is ready. Check the preview, then download the HTML file.</div>
+        </form>
+      </section>
+
+      <section class="panel preview-panel" aria-labelledby="preview-title">
+        <div class="preview-head"><div><p class="eyebrow">Live output</p><h2 id="preview-title">Signature preview</h2></div><span>650px Outlook-compatible layout</span></div>
+        <div class="preview-canvas"><iframe class="preview-frame" id="preview" title="Generated email signature preview"></iframe></div>
+        <div class="steps"><span><strong>1.</strong> Generate</span><span><strong>2.</strong> Download HTML or JPG</span><span><strong>3.</strong> Open the HTML in your browser and copy into Outlook</span></div>
+      </section>
+    </div>
+  </main>
+
+  <script src="html2canvas.min.js"></script>
+  <script>
+    const companies = [
+      ['Applebridge Family','https://applebridge.com/wp-content/uploads/2026/09/1.-Family-Portrait-Standard.png'],
+      ['Applebridge Geoenvironmental','https://applebridge.com/wp-content/uploads/2026/09/1.-Geoenvirinmental-Portrait-Standard.png'],
+      ['ZTL','https://applebridge.com/wp-content/uploads/2026/09/1.-ZTL-Portrait-Standard.png'],
+      ['AD Plant','https://applebridge.com/wp-content/uploads/2026/09/1.-AD-Plant-Hire-Portrait-Standard.png'],
+      ['Applebridge','https://applebridge.com/wp-content/uploads/2026/09/1.-Applebridge-Portrait-Standard.png'],
+      ['Hughes Bros','https://applebridge.com/wp-content/uploads/2026/09/HughesBros_Portrait_standard.png'],
+      ['Applebridge Utilities','https://applebridge.com/wp-content/uploads/2026/09/1.-Utilities-Portrait-Standard.png'],
+      ['Jig','https://applebridge.com/wp-content/uploads/2026/09/Jig_Portrait_standard.png'],
+      ['Applebridge Building Services','https://applebridge.com/wp-content/uploads/2026/09/1.-Building-Services-Portrait-Standard.png'],
+      ['Tarcon','https://applebridge.com/wp-content/uploads/2026/09/1.-Tarcon-Portrait-Standard.png']
+    ];
+    const offices = [
+      ['Hughes House','Cargo Fleet Road, Middlesbrough, TS3 6AG'],
+      ['Wakefield','23 Tadman Street, Wakefield, WF1 5RF'],
+      ['Chorley','Balmoral House, Ackhurst Business Park, Chorley, PR7 1NY'],
+      ['Coventry','No.Three Siskin Drive, Middlemarch Business Park, Coventry, CV3 4FJ'],
+      ['Altrincham','Office 4, Ashley Hall, Ashley, Altrincham, WA1 3QA'],
+      ['Stokesley','Stokesley Business Park, Mount Pleasant Way, Stokesley, TS9 5NZ']
+    ];
+    const groupLogos = [
+      ['Applebridge Geoenvironmental','https://applebridge.com/wp-content/uploads/2026/09/1.-Geoenvironmental-Standard.png',68],
+      ['ZTL Contracting','https://applebridge.com/wp-content/uploads/2026/09/1.-ZTL-Standard.png',33],
+      ['AD Plant Hire','https://applebridge.com/wp-content/uploads/2026/09/1.-AD-Plant-Hire-Standard.png',54],
+      ['Applebridge','https://applebridge.com/wp-content/uploads/2026/09/1.-Applebridge-Standard.png',67],
+      ['Hughes Bros Construction','https://applebridge.com/wp-content/uploads/2026/09/HughesBros-Landscape-Standard.png',65],
+      ['Applebridge Utilities','https://applebridge.com/wp-content/uploads/2026/09/1.-Utilities-Standard.png',67],
+      ['Jig Drainage','https://applebridge.com/wp-content/uploads/2026/09/Jig_Landscape-Standard.png',43],
+      ['Applebridge Building Services','https://applebridge.com/wp-content/uploads/2026/09/1.-Building-Services-Standard.png',68],
+      ['Tarcon','https://applebridge.com/wp-content/uploads/2026/09/1.-Tacon-Standard.png',49]
+    ];
+    const frameworks = ['Northumbrian Water Living Water','Yorhub','NET','Severn Trent','Procure Partnerships','NEUPC','NEPO','Yorkshire Water'];
+    const websites = [
+      'applebridgefamily.com',
+      'applebridgegeoenvironmental.com',
+      'ztlcontracting.com',
+      'adplanthire.co.uk',
+      'applebridge.com',
+      'hughesbros.ltd',
+      'applebridgeutilities.com',
+      'www.jigdrainage.co.uk',
+      'applebridgebuildingservices.com',
+      'applebridgefamily.com'
+    ];
+    const companyMeta = [
+      ['#DC4405',[
+        'This email and any files transmitted with it are confidential and may contain privileged material intended solely for the recipient(s) named above. If you are not the intended recipient of this email, please contact the sender immediately and destroy this email. Any views or opinions presented in this email are solely those of the author and might not represent those of Applebridge Group Ltd. Applebridge Group Ltd will not accept any liability in respect of any statement made in this email.',
+        'Warning: Although Applebridge Group Ltd has taken reasonable precautions to ensure no viruses are present in this email, the company cannot accept responsibility for any loss or damage arising from the use of this email or attachments.',
+        'Applebridge Group Ltd. Registered in England No. 13145684',
+        'Registered Office: Hughes House, Cargo Fleet Road, Middlesbrough, England, TS3 6AG. Telephone 01642 233400'
+      ]],
+      ['#E86A99',[
+        'This email and any files transmitted with it are confidential and may contain privileged material intended solely for the recipient(s) named above. If you are not the intended recipient of this email, please contact the sender immediately and destroy this email. Any views or opinions presented in this email are solely those of the author and might not represent those of Applebridge Geoenvironmental Ltd. Applebridge Geoenvironmental Ltd will not accept any liability in respect of any statement made in this email.',
+        'Warning: Although Applebridge Geoenvironmental Ltd has taken reasonable precautions to ensure no viruses are present in this email, the company cannot accept responsibility for any loss or damage arising from the use of this email or attachments.',
+        'Applebridge Geoenvironmental Ltd. Registered in England No. 14788917',
+        'Registered Office: Hughes House, Cargo Fleet Road, Middlesbrough, England, TS3 6AG. Telephone 01642 233400'
+      ]],
+      ['#97D700',[
+        'This email and any files transmitted with it are confidential and may contain privileged material intended solely for the recipient(s) named above. If you are not the intended recipient of this email, please contact the sender immediately and destroy this email. Any views or opinions presented in this email are solely those of the author and might not represent those of ZTL Contracting Ltd. ZTL Contracting Ltd will not accept any liability in respect of any statement made in this email.',
+        'Warning: Although ZTL Contracting Ltd has taken reasonable precautions to ensure no viruses are present in this email, the company cannot accept responsibility for any loss or damage arising from the use of this email or attachments.',
+        'ZTL Contracting Ltd. Registered in England No. 09834891',
+        'Registered Office: Hughes House, Cargo Fleet Road, Middlesbrough, England, TS3 6AG. Telephone 01642 233400'
+      ]],
+      ['#0072CE',[
+        'This email and any files transmitted with it are confidential and may contain privileged material intended solely for the recipient(s) named above. If you are not the intended recipient of this email, please contact the sender immediately and destroy this email. Any views or opinions presented in this email are solely those of the author and might not represent those of AD Plant Hire Ltd. AD Plant Hire Ltd will not accept any liability in respect of any statement made in this email.',
+        'Warning: Although AD Plant Hire Ltd has taken reasonable precautions to ensure no viruses are present in this email, the company cannot accept responsibility for any loss or damage arising from the use of this email or attachments.',
+        'AD Plant Hire Ltd. Registered in England No. 06324349'
+      ]],
+      ['#00B2A9',[
+        'This email and any files transmitted with it are confidential and may contain privileged material intended solely for the recipient(s) named above. If you are not the intended recipient of this email, please contact the sender immediately and destroy this email. Any views or opinions presented in this email are solely those of the author and might not represent those of Applebridge Construction Ltd. Applebridge Construction Ltd will not accept any liability in respect of any statement made in this email.',
+        'Warning: Although Applebridge Construction Ltd has taken reasonable precautions to ensure no viruses are present in this email, the company cannot accept responsibility for any loss or damage arising from the use of this email or attachments.',
+        'Applebridge Construction Ltd. Registered in England No. 08732701',
+        'Registered Office: Hughes House, Cargo Fleet Road, Middlesbrough, England, TS3 6AG. Telephone 01642 233400'
+      ]],
+      ['#F2A900',[
+        'This email and any files transmitted with it are confidential and may contain privileged material intended solely for the recipient(s) named above. If you are not the intended recipient of this email, please contact the sender immediately and destroy this email. Any views or opinions presented in this email are solely those of the author and might not represent those of Hughes Bros Construction Limited. Hughes Bros Construction Limited will not accept any liability in respect of any statement made in this email.',
+        'Warning: Although Hughes Bros Construction Limited has taken reasonable precautions to ensure no viruses are present in this email, the company cannot accept responsibility for any loss or damage arising from the use of this email or attachments.',
+        'Hughes Bros Construction Limited. Registered in England No. 05635308',
+        'Registered Office: Plantation Cottage, Middleton St George, Darlington, United Kingdom, DL2 1RJ.'
+      ]],
+      ['#0072CE',[
+        'This email and any files transmitted with it are confidential and may contain privileged material intended solely for the recipient(s) named above. If you are not the intended recipient of this email, please contact the sender immediately and destroy this email. Any views or opinions presented in this email are solely those of the author and might not represent those of Applebridge Utilities Ltd or any of its subsidiaries. Applebridge Utilities Ltd and its subsidiaries will not accept any liability in respect of any statements made in this email.',
+        'Warning: Although Applebridge Utilities Ltd has taken reasonable precautions to ensure no viruses are present in this email, the company cannot accept responsibility for any loss or damage arising from the use of this email or attachments.',
+        'Applebridge Utilities Ltd. Registered in England No. 13436554',
+        'Registered Office: Hughes House, Cargo Fleet Road, Middlesbrough, TS3 6AG. Telephone: 01642 233400'
+      ]],
+      ['#F2A900',[
+        'This email and any files transmitted with it are confidential and may contain privileged material intended solely for the recipient(s) named above. If you are not the intended recipient of this email, please contact the sender immediately and destroy this email. Any views or opinions presented in this email are solely those of the author and might not represent those of Jig UK Drainage Solutions Ltd. Jig UK Drainage Solutions Ltd will not accept any liability in respect of any statement made in this email.',
+        'Warning: Although Jig UK Drainage Solutions Ltd. has taken reasonable precautions to ensure no viruses are present in this email, the company cannot accept responsibility for any loss or damage arising from the use of this email or attachments.',
+        'Jig UK Drainage Solutions Ltd. Registered in England No. 13677602',
+        'Registered Office: Plantation Cottage, Middleton St George, Darlington, United Kingdom, DL2 1RJ.'
+      ]],
+      ['#862633',[
+        'This email and any files transmitted with it are confidential and may contain privileged material intended solely for the recipient(s) named above. If you are not the intended recipient of this email, please contact the sender immediately and destroy this email. Any views or opinions presented in this email are solely those of the author and might not represent those of Applebridge Building Services Ltd. Applebridge Building Services Ltd will not accept any liability in respect of any statement made in this email.',
+        'Warning: Although Applebridge Building Services Ltd has taken reasonable precautions to ensure no viruses are present in this email, the company cannot accept responsibility for any loss or damage arising from the use of this email or attachments.',
+        'Applebridge Building Services Ltd. Registered in England No. 09551619',
+        'Registered Office: Hughes House, Cargo Fleet Road, Middlesbrough, England, TS3 6AG. Telephone 01642 233400'
+      ]],
+      ['#829995',[
+        'This email and any files transmitted with it are confidential and may contain privileged material intended solely for the recipient(s) named above. If you are not the intended recipient of this email, please contact the sender immediately and destroy this email. Any views or opinions presented in this email are solely those of the author and might not represent those of Tarcon Ltd. Tarcon Ltd will not accept any liability in respect of any statement made in this email.',
+        'Warning: Although Tarcon Ltd has taken reasonable precautions to ensure no viruses are present in this email, the company cannot accept responsibility for any loss or damage arising from the use of this email or attachments.',
+        'Tarcon Ltd. Registered in England No. 08412452',
+        'Registered Office: Hughes House, Cargo Fleet Road, Middlesbrough, England, TS3 6AG. Telephone 01642 233400'
+      ]]
+    ];
+    const $ = id => document.getElementById(id);
+    companies.forEach(([name],i)=>$('company').add(new Option(name,i)));
+    offices.forEach(([name,address],i)=>$('office').add(new Option(name+' — '+address,i)));
+
+    const esc = value => String(value ?? '').replace(/[&<>'"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]));
+    const slug = value => value.trim().toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g,'.').replace(/^\.+|\.+$/g,'');
+    let emailWasEdited = false;
+    $('email').addEventListener('input',()=>emailWasEdited=true);
+    ['forename','surname'].forEach(id=>$(id).addEventListener('input',()=>{if(!emailWasEdited)$('email').value=[slug($('forename').value),slug($('surname').value)].filter(Boolean).join('.')+'@applebridge.com'}));
+
+    function data(sample=false){
+      const ci=Number($('company').value||0), oi=Number($('office').value||0);
+      return {company:companies[ci][0],logo:companies[ci][1],accent:companyMeta[ci][0],disclaimer:companyMeta[ci][1],website:websites[ci],forename:sample?'Callum':$('forename').value.trim(),surname:sample?'Cowham':$('surname').value.trim(),position:sample?'Group Marketing Manager':$('position').value.trim(),phone:sample?'07719 014983':$('phone').value.trim(),email:sample?'callum.cowham@applebridge.com':$('email').value.trim(),office:offices[oi][0],address:offices[oi][1]};
+    }
+
+    function signatureHtml(d){
+      const logos=groupLogos.map(([name,url,w])=>'<td align="center" width="11.11%"><img src="'+url+'" width="'+w+'" height="18" alt="'+esc(name)+'" style="display:block;width:'+w+'px;height:18px;border:0;"></td>').join('');
+      const frameworkRows=[frameworks.slice(0,4),frameworks.slice(4)].map(row=>'<tr>'+row.map(name=>'<td style="padding:5px 6px;border:1px solid #507078;">'+esc(name)+'</td>').join('')+'</tr>').join('');
+      const fullName=(d.forename+' '+d.surname).trim().toUpperCase();
+      const disclaimer=d.disclaimer.map((line,index)=>'<div'+(index?' style="margin-top:5px;"':'')+'>'+esc(line)+'</div>').join('');
+      return '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+esc(fullName)+' Email Signature</title></head><body style="margin:0;padding:24px;background:#ffffff;">'+
+      '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="650" style="width:650px;max-width:650px;background:#ffffff;border-collapse:collapse;font-family:Arial,Helvetica,sans-serif;color:#00313c;">'+
+      '<tr><td style="padding:0 0 14px 0;"><table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;"><tr>'+
+      '<td width="176" align="center" valign="middle" style="width:176px;padding:14px 22px 14px 20px;border-right:1px solid #dfe5e6;"><img src="'+d.logo+'" width="142" alt="'+esc(d.company)+'" style="display:block;width:142px;height:auto;border:0;margin:0 auto;"></td>'+
+      '<td valign="top" style="padding:18px 20px 14px 24px;"><div style="font-size:21px;line-height:24px;font-weight:bold;color:#00313c;">'+esc(fullName)+'</div><div style="font-size:13px;line-height:19px;color:#53666a;margin-top:2px;">'+esc(d.position)+'</div><div style="height:3px;width:48px;background:'+d.accent+';margin:10px 0;line-height:3px;">&nbsp;</div>'+
+      '<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-size:12px;line-height:18px;color:#00313c;"><tr><td width="22" style="width:22px;color:'+d.accent+';font-weight:bold;">T</td><td><a href="tel:'+esc(d.phone.replace(/\s/g,''))+'" style="color:#00313c;text-decoration:none;">'+esc(d.phone)+'</a></td></tr><tr><td style="color:'+d.accent+';font-weight:bold;">E</td><td><a href="mailto:'+esc(d.email)+'" style="color:#00313c;text-decoration:none;">'+esc(d.email)+'</a></td></tr><tr><td style="color:'+d.accent+';font-weight:bold;">W</td><td><a href="https://'+esc(d.website)+'" style="color:#00313c;text-decoration:underline;">'+esc(d.website)+'</a></td></tr><tr><td valign="top" style="color:'+d.accent+';font-weight:bold;">A</td><td>'+esc(d.office)+', '+esc(d.address)+'</td></tr></table></td></tr></table></td></tr>'+
+      '<tr><td style="padding:12px 18px 13px;border-top:4px solid '+d.accent+';background:#f5f7f7;"><div style="font-size:10px;line-height:14px;letter-spacing:1.3px;font-weight:bold;color:#53666a;margin-bottom:9px;">THE APPLEBRIDGE FAMILY</div><table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;"><tr>'+logos+'</tr></table></td></tr>'+
+      '<tr><td style="padding:14px 18px 15px;background:#00313c;"><table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;"><tr><td valign="top" width="205" style="width:205px;color:#fff;padding-right:15px;"><div style="font-size:10px;line-height:14px;letter-spacing:1.4px;color:#DC4405;font-weight:bold;">PROUD FRAMEWORK PARTNERS</div><div style="font-size:15px;line-height:20px;font-weight:bold;margin-top:3px;">Delivering long-term value across the UK</div></td><td valign="top"><table role="presentation" cellpadding="0" cellspacing="4" border="0" width="100%" style="border-collapse:separate;font-size:9px;line-height:12px;color:#fff;">'+frameworkRows+'</table></td></tr></table></td></tr>'+
+      '<tr><td style="padding:12px 18px 0;font-size:8.5px;line-height:12px;color:#718084;">'+disclaimer+'</td></tr></table></body></html>';
+    }
+
+    const localAssetByRemote = new Map([
+      ['https://applebridge.com/wp-content/uploads/2026/09/1.-Family-Portrait-Standard.png','assets/family-portrait.png'],
+      ['https://applebridge.com/wp-content/uploads/2026/09/1.-Geoenvirinmental-Portrait-Standard.png','assets/geo-portrait.png'],
+      ['https://applebridge.com/wp-content/uploads/2026/09/1.-ZTL-Portrait-Standard.png','assets/ztl-portrait.png'],
+      ['https://applebridge.com/wp-content/uploads/2026/09/1.-AD-Plant-Hire-Portrait-Standard.png','assets/ad-portrait.png'],
+      ['https://applebridge.com/wp-content/uploads/2026/09/1.-Applebridge-Portrait-Standard.png','assets/applebridge-portrait.png'],
+      ['https://applebridge.com/wp-content/uploads/2026/09/HughesBros_Portrait_standard.png','assets/hughes-portrait.png'],
+      ['https://applebridge.com/wp-content/uploads/2026/09/1.-Utilities-Portrait-Standard.png','assets/utilities-portrait.png'],
+      ['https://applebridge.com/wp-content/uploads/2026/09/Jig_Portrait_standard.png','assets/jig-portrait.png'],
+      ['https://applebridge.com/wp-content/uploads/2026/09/1.-Building-Services-Portrait-Standard.png','assets/building-portrait.png'],
+      ['https://applebridge.com/wp-content/uploads/2026/09/1.-Tarcon-Portrait-Standard.png','assets/tarcon-portrait.png'],
+      ['https://applebridge.com/wp-content/uploads/2026/09/1.-Geoenvironmental-Standard.png','assets/geo.png'],
+      ['https://applebridge.com/wp-content/uploads/2026/09/1.-ZTL-Standard.png','assets/ztl.png'],
+      ['https://applebridge.com/wp-content/uploads/2026/09/1.-AD-Plant-Hire-Standard.png','assets/ad.png'],
+      ['https://applebridge.com/wp-content/uploads/2026/09/1.-Applebridge-Standard.png','assets/applebridge.png'],
+      ['https://applebridge.com/wp-content/uploads/2026/09/HughesBros-Landscape-Standard.png','assets/hughes.png'],
+      ['https://applebridge.com/wp-content/uploads/2026/09/1.-Utilities-Standard.png','assets/utilities.png'],
+      ['https://applebridge.com/wp-content/uploads/2026/09/Jig_Landscape-Standard.png','assets/jig.png'],
+      ['https://applebridge.com/wp-content/uploads/2026/09/1.-Building-Services-Standard.png','assets/building.png'],
+      ['https://applebridge.com/wp-content/uploads/2026/09/1.-Tacon-Standard.png','assets/tarcon.png']
+    ]);
+    let generatedHtml='';
+    function render(d){$('preview').srcdoc=signatureHtml(d)}
+    render(data(true));
+    $('company').addEventListener('change',()=>render(data(!$('forename').value)));
+    $('office').addEventListener('change',()=>render(data(!$('forename').value)));
+    $('signature-form').addEventListener('submit',e=>{e.preventDefault();const d=data();generatedHtml=signatureHtml(d);render(d);$('download').disabled=false;$('download-jpg').disabled=false;$('notice').classList.add('show')});
+    $('download').addEventListener('click',()=>{if(!generatedHtml)return;const d=data();const file=[slug(d.forename),slug(d.surname),'email-signature.html'].filter(Boolean).join('-');const url=URL.createObjectURL(new Blob([generatedHtml],{type:'text/html;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download=file;a.click();setTimeout(()=>URL.revokeObjectURL(url),500)});
+    $('download-jpg').addEventListener('click',async()=>{
+      if(!generatedHtml)return;
+      const button=$('download-jpg');
+      button.disabled=true;
+      button.textContent='Preparing JPG…';
+      const capture=document.createElement('div');
+      capture.style.cssText='position:fixed;left:-10000px;top:0;width:698px;padding:24px;background:#fff;z-index:-1;';
+      const table=$('preview').contentDocument.querySelector('table').cloneNode(true);
+      capture.appendChild(table);
+      document.body.appendChild(capture);
+      capture.querySelectorAll('img').forEach(img=>{const local=localAssetByRemote.get(img.src);if(local)img.src=new URL(local,location.href).href});
+      try{
+        await Promise.all([...capture.querySelectorAll('img')].map(img=>img.complete?Promise.resolve():new Promise(resolve=>{img.onload=img.onerror=resolve})));
+        const canvas=await html2canvas(capture,{backgroundColor:'#ffffff',scale:2,logging:false,useCORS:false});
+        const d=data();
+        const file=[slug(d.forename),slug(d.surname),'email-signature.jpg'].filter(Boolean).join('-');
+        const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/jpeg',.94));
+        const url=URL.createObjectURL(blob);
+        const a=document.createElement('a');a.href=url;a.download=file;a.click();
+        setTimeout(()=>URL.revokeObjectURL(url),500);
+      } finally {
+        capture.remove();button.disabled=false;button.textContent='Download JPG';
+      }
+    });
+  </script>
+</body>
+</html>
