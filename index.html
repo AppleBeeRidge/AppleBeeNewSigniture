@@ -21,7 +21,7 @@
     .eyebrow{margin:0 0 8px;color:var(--orange);font-size:.76rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.form-panel h2,.preview-head h2{font-size:1.25rem;margin:0}.intro{color:var(--muted);font-size:.93rem;line-height:1.55;margin:8px 0 22px}
     form{display:grid;gap:17px}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
     label{display:block;font-size:.82rem;font-weight:700;margin-bottom:7px;color:#294d54}input,select{width:100%;min-height:44px;border:1px solid #c8d4d6;border-radius:3px;padding:10px 12px;background:#fff;color:var(--ink);font:inherit;font-size:.92rem;outline:none}input:focus,select:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(232,69,5,.12)}
-    .email-note{margin:6px 0 0;color:var(--muted);font-size:.75rem;line-height:1.4}.checkbox-row{display:flex;align-items:center;gap:10px}.checkbox-row input{width:18px;min-height:18px;height:18px;margin:0;accent-color:var(--orange)}.checkbox-row label{margin:0;font-size:.88rem;cursor:pointer}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}.button{min-height:46px;border:0;border-radius:3px;padding:0 17px;font-size:.88rem;font-weight:800;cursor:pointer}.button-primary{background:var(--orange);color:#fff;flex:1 1 100%}.button-secondary{background:var(--ink);color:#fff;flex:1}.button:disabled{opacity:.38;cursor:not-allowed}.button:hover:not(:disabled){filter:brightness(.94)}
+    .email-note{margin:6px 0 0;color:var(--muted);font-size:.75rem;line-height:1.4}.checkbox-row{display:flex;align-items:center;gap:10px}.checkbox-row input{width:18px;min-height:18px;height:18px;margin:0;accent-color:var(--orange)}.checkbox-row label{margin:0;font-size:.88rem;cursor:pointer}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}.button{min-height:46px;border:0;border-radius:3px;padding:0 17px;font-size:.88rem;font-weight:800;cursor:pointer}.button-primary{background:var(--orange);color:#fff;flex:1 1 100%}.button-secondary{background:var(--ink);color:#fff;flex:1 1 115px}.button:disabled{opacity:.38;cursor:not-allowed}.button:hover:not(:disabled){filter:brightness(.94)}
     .preview-panel{overflow:hidden}.preview-head{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:22px 24px;border-bottom:1px solid var(--line)}.preview-head span{color:var(--muted);font-size:.78rem}.preview-canvas{padding:32px;background:repeating-linear-gradient(45deg,#f5f7f7,#f5f7f7 12px,#f0f4f4 12px,#f0f4f4 24px);overflow:auto}.preview-frame{display:block;width:700px;max-width:none;height:550px;border:0;background:white;box-shadow:0 8px 24px rgba(0,49,60,.1);transform-origin:top left}
     .steps{padding:18px 24px;border-top:1px solid var(--line);display:flex;gap:26px;color:var(--muted);font-size:.8rem}.steps strong{color:var(--ink)}
     .notice{display:none;margin-top:12px;padding:10px 12px;background:#eef7f2;border-left:3px solid #16835a;color:#155d43;font-size:.82rem}.notice.show{display:block}
@@ -46,23 +46,23 @@
         <form id="signature-form">
           <div><label for="company">Company</label><select id="company" required></select></div>
           <div class="row">
-            <div><label for="forename">Forename</label><input id="forename" autocomplete="given-name" placeholder="e.g. Joe" required></div>
-            <div><label for="surname">Surname</label><input id="surname" autocomplete="family-name" placeholder="e.g. Blogs" required></div>
+            <div><label for="forename">Forename</label><input id="forename" autocomplete="given-name" placeholder="e.g. Callum" required></div>
+            <div><label for="surname">Surname</label><input id="surname" autocomplete="family-name" placeholder="e.g. Cowham" required></div>
           </div>
           <div><label for="position">Position</label><input id="position" placeholder="e.g. Group Marketing Manager" required></div>
           <div class="checkbox-row"><input id="include-mobile" type="checkbox"><label for="include-mobile">Include mobile number</label></div>
           <div id="mobile-field" hidden><label for="phone">Mobile number</label><input id="phone" type="tel" autocomplete="tel" placeholder="e.g. 07719 014983"></div>
           <div><label for="office">Office</label><select id="office" required></select></div>
           <div><label for="email">Work email</label><input id="email" type="email" autocomplete="email" placeholder="forename.surname@applebridge.com" required><p class="email-note">Created from your name automatically. You can amend it before generating.</p></div>
-          <div class="actions"><button class="button button-primary" type="submit">Generate signature</button><button class="button button-secondary" id="download" type="button" disabled>Download HTML</button><button class="button button-secondary" id="download-jpg" type="button" disabled>Download JPG</button></div>
-          <div class="notice" id="notice" role="status">Your signature is ready. Check the preview, then download the HTML file.</div>
+          <div class="actions"><button class="button button-primary" type="submit">Generate signature</button><button class="button button-secondary" id="copy-signature" type="button" disabled>Copy Signature</button><button class="button button-secondary" id="download-word" type="button" disabled>Download Word</button><button class="button button-secondary" id="download" type="button" disabled>Download HTML</button><button class="button button-secondary" id="download-jpg" type="button" disabled>Download JPG</button></div>
+          <div class="notice" id="notice" role="status">Your signature is ready. Copy it directly into Outlook or download a file.</div>
         </form>
       </section>
 
       <section class="panel preview-panel" aria-labelledby="preview-title">
         <div class="preview-head"><div><p class="eyebrow">Live output</p><h2 id="preview-title">Signature preview</h2></div><span>650px Outlook-compatible layout</span></div>
         <div class="preview-canvas"><iframe class="preview-frame" id="preview" title="Generated email signature preview"></iframe></div>
-        <div class="steps"><span><strong>1.</strong> Generate</span><span><strong>2.</strong> Download HTML or JPG</span><span><strong>3.</strong> Open the HTML in your browser and copy into Outlook</span></div>
+        <div class="steps"><span><strong>1.</strong> Generate</span><span><strong>2.</strong> Copy or download</span><span><strong>3.</strong> Word download is recommended for Outlook Classic</span></div>
       </section>
     </div>
   </main>
@@ -70,12 +70,13 @@
   <dialog class="install-dialog" id="install-dialog" aria-labelledby="install-title">
     <div class="dialog-head"><h2 id="install-title">How to install your signature</h2><button class="dialog-close" id="close-install" type="button" aria-label="Close installation video">×</button></div>
     <div class="dialog-body">
-      <p>Please play the video for a walkthrough on how to install your email foooter.</p>
-      <div class="video-wrap"><iframe src="https://www.youtube-nocookie.com/embed/WdhfXuIqskM?si=xq03LZ3hLqzNPTKb?rel=0" title="Email signature installation video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+      <p>This temporary video will be replaced with the Applebridge installation guide.</p>
+      <div class="video-wrap"><iframe src="https://www.youtube-nocookie.com/embed/jNQXAC9IVRw?rel=0" title="Email signature installation video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
     </div>
   </dialog>
 
   <script src="html2canvas.min.js"></script>
+  <script src="docx.iife.js"></script>
   <script>
     const companies = [
       ['Applebridge Family','https://applebridge.com/wp-content/uploads/2026/09/1.-Family-Portrait-Standard.png'],
@@ -168,7 +169,7 @@
         'Hughes Bros Construction Limited. Registered in England No. 05635308',
         'Registered Office: Plantation Cottage, Middleton St George, Darlington, United Kingdom, DL2 1RJ.'
       ]],
-      ['#007C58',[
+      ['#0072CE',[
         'This email and any files transmitted with it are confidential and may contain privileged material intended solely for the recipient(s) named above. If you are not the intended recipient of this email, please contact the sender immediately and destroy this email. Any views or opinions presented in this email are solely those of the author and might not represent those of Applebridge Utilities Ltd or any of its subsidiaries. Applebridge Utilities Ltd and its subsidiaries will not accept any liability in respect of any statements made in this email.',
         'Warning: Although Applebridge Utilities Ltd has taken reasonable precautions to ensure no viruses are present in this email, the company cannot accept responsibility for any loss or damage arising from the use of this email or attachments.',
         'Applebridge Utilities Ltd. Registered in England No. 13436554',
@@ -214,7 +215,7 @@
 
     function data(sample=false){
       const ci=Number($('company').value||0), oi=Number($('office').value||0);
-      return {company:companies[ci][0],logo:companies[ci][1],accent:companyMeta[ci][0],disclaimer:companyMeta[ci][1],website:websites[ci],socials:socials[ci],forename:sample?'Joe':$('forename').value.trim(),surname:sample?'Blogs':$('surname').value.trim(),position:sample?'Manager':$('position').value.trim(),hasMobile:sample?false:$('include-mobile').checked,phone:sample?'':$('phone').value.trim(),email:sample?'joe.blogs@applebridge.com':$('email').value.trim(),office:offices[oi][0],address:offices[oi][1]};
+      return {company:companies[ci][0],logo:companies[ci][1],accent:companyMeta[ci][0],disclaimer:companyMeta[ci][1],website:websites[ci],socials:socials[ci],forename:sample?'Callum':$('forename').value.trim(),surname:sample?'Cowham':$('surname').value.trim(),position:sample?'Group Marketing Manager':$('position').value.trim(),hasMobile:sample?false:$('include-mobile').checked,phone:sample?'':$('phone').value.trim(),email:sample?'callum.cowham@applebridge.com':$('email').value.trim(),office:offices[oi][0],address:offices[oi][1]};
     }
 
     function signatureHtml(d){
@@ -232,7 +233,7 @@
       '<td valign="top" style="padding:18px 20px 14px 24px;"><div style="font-size:21px;line-height:24px;font-weight:bold;color:#00313c;">'+esc(fullName)+'</div><div style="font-size:13px;line-height:19px;color:#53666a;margin-top:2px;">'+esc(d.position)+'</div><div style="height:3px;width:48px;background:'+d.accent+';margin:10px 0;line-height:3px;">&nbsp;</div>'+
       '<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-size:12px;line-height:18px;color:#00313c;"><tr><td width="22" style="width:22px;color:'+d.accent+';font-weight:bold;">T</td><td><a href="tel:+441642233400" style="color:#00313c;text-decoration:none;">01642 233400</a></td></tr>'+mobileRow+'<tr><td style="color:'+d.accent+';font-weight:bold;">E</td><td><a href="mailto:'+esc(d.email)+'" style="color:#00313c;text-decoration:none;">'+esc(d.email)+'</a></td></tr><tr><td style="color:'+d.accent+';font-weight:bold;">W</td><td><a href="https://'+esc(d.website)+'" style="color:#00313c;text-decoration:underline;">'+esc(d.website)+'</a></td></tr><tr><td valign="top" style="color:'+d.accent+';font-weight:bold;">A</td><td>'+esc(d.office)+', '+esc(d.address)+'</td></tr></table></td></tr></table></td></tr>'+
       '<tr><td style="padding:12px 18px 13px;border-top:4px solid '+d.accent+';background:#f5f7f7;"><div style="font-size:10px;line-height:14px;letter-spacing:1.3px;font-weight:bold;color:#53666a;margin-bottom:9px;">THE APPLEBRIDGE FAMILY</div><table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;"><tr>'+logos+'</tr></table></td></tr>'+
-      '<tr><td style="padding:0 18px;background:#00313c;"><img src="https://applebridge.com/wp-content/uploads/2026/09/GIF_FRAMEWORK_Update-240926.gif" width="614" height="94" alt="Applebridge framework partners" style="display:block;width:614px;height:94px;border:0;"></td></tr>'+
+      '<tr><td style="padding:0 18px;background:#00313c;"><img src="https://applebridge.com/wp-content/uploads/2026/09/GIF_FRAMEWORK_614.gif" width="614" height="94" alt="Applebridge framework partners" style="display:block;width:614px;height:94px;border:0;"></td></tr>'+
       '<tr><td style="padding:12px 18px 0;font-size:8.5px;line-height:12px;color:#718084;">'+disclaimer+'</td></tr></table></body></html>';
     }
 
@@ -256,15 +257,153 @@
       ['https://applebridge.com/wp-content/uploads/2026/09/Jig_Landscape-Standard.png','assets/jig.png'],
       ['https://applebridge.com/wp-content/uploads/2026/09/1.-Building-Services-Standard.png','assets/building.png'],
       ['https://applebridge.com/wp-content/uploads/2026/09/1.-Tacon-Standard.png','assets/tarcon.png'],
-      ['https://applebridge.com/wp-content/uploads/2026/09/GIF_FRAMEWORK_Update-240926.gif','assets/framework.gif']
+      ['https://applebridge.com/wp-content/uploads/2026/09/GIF_FRAMEWORK_614.gif','assets/framework.gif']
     ]);
+
+    async function fetchLocalAsset(remoteUrl){
+      const localPath=localAssetByRemote.get(remoteUrl);
+      if(!localPath)throw new Error('No local Word-export asset is mapped for '+remoteUrl);
+      const response=await fetch(new URL(localPath,location.href));
+      if(!response.ok)throw new Error('Could not load '+localPath);
+      return new Uint8Array(await response.arrayBuffer());
+    }
+
+    function saveBlob(blob,fileName){
+      const url=URL.createObjectURL(blob);
+      const a=document.createElement('a');
+      a.href=url;a.download=fileName;a.click();
+      setTimeout(()=>URL.revokeObjectURL(url),500);
+    }
+
+    async function createWordSignature(d){
+      const {Document,Packer,Paragraph,TextRun,Table,TableRow,TableCell,ImageRun,ExternalHyperlink,WidthType,BorderStyle,AlignmentType,VerticalAlign,TableLayoutType}=docx;
+      const accent=d.accent.replace('#','');
+      const ink='00313C';
+      const muted='53666A';
+      const noBorder={style:BorderStyle.NONE,size:0,color:'FFFFFF'};
+      const noBorders={top:noBorder,bottom:noBorder,left:noBorder,right:noBorder,insideHorizontal:noBorder,insideVertical:noBorder};
+      const [mainLogo,frameworkGif,...groupImages]=await Promise.all([
+        fetchLocalAsset(d.logo),
+        fetchLocalAsset('https://applebridge.com/wp-content/uploads/2026/09/GIF_FRAMEWORK_614.gif'),
+        ...groupLogos.map(([,url])=>fetchLocalAsset(url))
+      ]);
+      const linkRun=(label,href)=>new ExternalHyperlink({link:href,children:[new TextRun({text:label,color:ink,size:18})]});
+      const contactLine=(letter,value,href)=>new Paragraph({spacing:{after:0,line:240},children:[new TextRun({text:letter+'  ',bold:true,color:accent,size:18}),href?linkRun(value,href):new TextRun({text:value,color:ink,size:18})]});
+      const socialChildren=[];
+      [['linkedin','in'],['facebook','f'],['instagram','◎']].forEach(([key,label])=>{
+        if(!d.socials[key])return;
+        if(socialChildren.length)socialChildren.push(new TextRun({text:'   ',size:18}));
+        socialChildren.push(new ExternalHyperlink({link:d.socials[key],children:[new TextRun({text:label,bold:true,color:accent,size:20})]}));
+      });
+      const leftChildren=[
+        new Paragraph({alignment:AlignmentType.CENTER,spacing:{after:80},children:[new ImageRun({type:'png',data:mainLogo,transformation:{width:120,height:161}})]})
+      ];
+      if(socialChildren.length)leftChildren.push(new Paragraph({alignment:AlignmentType.CENTER,spacing:{after:0},children:socialChildren}));
+      const details=[
+        new Paragraph({spacing:{after:20},children:[new TextRun({text:(d.forename+' '+d.surname).trim().toUpperCase(),bold:true,color:ink,size:31})]}),
+        new Paragraph({spacing:{after:40},children:[new TextRun({text:d.position,color:muted,size:20})]}),
+        new Paragraph({spacing:{after:50},children:[new TextRun({text:'━━━━',bold:true,color:accent,size:18})]}),
+        contactLine('T','01642 233400','tel:+441642233400')
+      ];
+      if(d.hasMobile&&d.phone)details.push(contactLine('M',d.phone,'tel:'+d.phone.replace(/\s/g,'')));
+      details.push(
+        contactLine('E',d.email,'mailto:'+d.email),
+        contactLine('W',d.website,'https://'+d.website),
+        contactLine('A',d.office+', '+d.address,'')
+      );
+      const topTable=new Table({
+        width:{size:9750,type:WidthType.DXA},columnWidths:[2800,6950],layout:TableLayoutType.FIXED,borders:noBorders,
+        rows:[new TableRow({children:[
+          new TableCell({width:{size:2800,type:WidthType.DXA},verticalAlign:VerticalAlign.CENTER,margins:{top:100,right:220,bottom:100,left:100},borders:{...noBorders,right:{style:BorderStyle.SINGLE,size:4,color:'DFE5E6'}},children:leftChildren}),
+          new TableCell({width:{size:6950,type:WidthType.DXA},verticalAlign:VerticalAlign.CENTER,margins:{top:120,right:100,bottom:100,left:260},borders:noBorders,children:details})
+        ]})]
+      });
+      const groupTable=new Table({
+        width:{size:9210,type:WidthType.DXA},columnWidths:Array(9).fill(1023),layout:TableLayoutType.FIXED,borders:noBorders,
+        rows:[new TableRow({children:groupLogos.map(([name,,width],index)=>new TableCell({
+          width:{size:1023,type:WidthType.DXA},verticalAlign:VerticalAlign.CENTER,margins:{top:40,right:20,bottom:40,left:20},borders:noBorders,
+          children:[new Paragraph({alignment:AlignmentType.CENTER,spacing:{after:0},children:[new ImageRun({type:'png',data:groupImages[index],transformation:{width,height:18},altText:{title:name,description:name,name}})]})]
+        }))})]
+      });
+      const familyBlock=new Table({
+        width:{size:9750,type:WidthType.DXA},columnWidths:[9750],layout:TableLayoutType.FIXED,borders:noBorders,
+        rows:[new TableRow({children:[new TableCell({
+          width:{size:9750,type:WidthType.DXA},margins:{top:100,right:180,bottom:100,left:180},
+          borders:{top:{style:BorderStyle.SINGLE,size:18,color:accent},bottom:noBorder,left:noBorder,right:noBorder},
+          children:[new Paragraph({spacing:{after:70},children:[new TextRun({text:'THE APPLEBRIDGE FAMILY',bold:true,color:muted,size:15,characterSpacing:20})]}),groupTable]
+        })]})]
+      });
+      const document=new Document({
+        styles:{default:{document:{run:{font:'Arial',color:ink,size:18},paragraph:{spacing:{after:0}}}}},
+        sections:[{properties:{page:{margin:{top:360,right:360,bottom:360,left:360}}},children:[
+          topTable,
+          familyBlock,
+          new Paragraph({spacing:{before:0,after:80},children:[new ImageRun({type:'gif',data:frameworkGif,transformation:{width:614,height:94},altText:{title:'Applebridge framework partners',description:'Applebridge framework partners',name:'Framework partners'}})]}),
+          ...d.disclaimer.map(line=>new Paragraph({spacing:{after:35,line:180},children:[new TextRun({text:line,color:'718084',size:13})]}))
+        ]}]
+      });
+      return Packer.toBlob(document);
+    }
+
     let generatedHtml='';
     function render(d){$('preview').srcdoc=signatureHtml(d)}
     render(data(true));
     $('company').addEventListener('change',()=>render(data(!$('forename').value)));
     $('office').addEventListener('change',()=>render(data(!$('forename').value)));
-    $('signature-form').addEventListener('submit',e=>{e.preventDefault();const d=data();generatedHtml=signatureHtml(d);render(d);$('download').disabled=false;$('download-jpg').disabled=false;$('notice').classList.add('show')});
+    $('signature-form').addEventListener('submit',e=>{e.preventDefault();const d=data();generatedHtml=signatureHtml(d);render(d);$('copy-signature').disabled=false;$('download-word').disabled=false;$('download').disabled=false;$('download-jpg').disabled=false;$('notice').textContent='Your signature is ready. Copy it directly into Outlook or download a file.';$('notice').classList.add('show')});
+    $('copy-signature').addEventListener('click',async()=>{
+      if(!generatedHtml)return;
+      const button=$('copy-signature');
+      const previewDocument=$('preview').contentDocument;
+      const html=previewDocument.body.innerHTML;
+      const text=previewDocument.body.innerText;
+      button.disabled=true;
+      button.textContent='Copying…';
+      try{
+        if(navigator.clipboard&&window.ClipboardItem){
+          await navigator.clipboard.write([new ClipboardItem({
+            'text/html':new Blob([html],{type:'text/html'}),
+            'text/plain':new Blob([text],{type:'text/plain'})
+          })]);
+        }else{
+          const range=previewDocument.createRange();
+          range.selectNodeContents(previewDocument.body);
+          const selection=previewDocument.getSelection();
+          selection.removeAllRanges();selection.addRange(range);
+          if(!previewDocument.execCommand('copy'))throw new Error('Copy command failed');
+          selection.removeAllRanges();
+        }
+        button.textContent='Copied';
+        $('notice').textContent='Signature copied. Paste it into the Outlook signature editor.';
+        $('notice').classList.add('show');
+      }catch(error){
+        button.textContent='Copy failed';
+        $('notice').textContent='The browser blocked clipboard access. Please download the HTML file instead.';
+        $('notice').classList.add('show');
+      }finally{
+        setTimeout(()=>{button.disabled=false;button.textContent='Copy Signature'},1800);
+      }
+    });
     $('download').addEventListener('click',()=>{if(!generatedHtml)return;const d=data();const file=[slug(d.forename),slug(d.surname),'email-signature.html'].filter(Boolean).join('-');const url=URL.createObjectURL(new Blob([generatedHtml],{type:'text/html;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download=file;a.click();setTimeout(()=>URL.revokeObjectURL(url),500)});
+    $('download-word').addEventListener('click',async()=>{
+      if(!generatedHtml)return;
+      const button=$('download-word');
+      button.disabled=true;button.textContent='Preparing Word…';
+      try{
+        const d=data();
+        const blob=await createWordSignature(d);
+        const file=[slug(d.forename),slug(d.surname),'outlook-classic-signature.docx'].filter(Boolean).join('-');
+        saveBlob(blob,file);
+        $('notice').textContent='Word template downloaded. Open it, select the signature and copy it into Outlook Classic.';
+        $('notice').classList.add('show');
+      }catch(error){
+        console.error(error);
+        $('notice').textContent='The Word template could not be created. Please use Copy Signature or Download HTML.';
+        $('notice').classList.add('show');
+      }finally{
+        button.disabled=false;button.textContent='Download Word';
+      }
+    });
     $('download-jpg').addEventListener('click',async()=>{
       if(!generatedHtml)return;
       const button=$('download-jpg');
