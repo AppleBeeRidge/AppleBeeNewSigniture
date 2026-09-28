@@ -215,7 +215,7 @@
 
     function data(sample=false){
       const ci=Number($('company').value||0), oi=Number($('office').value||0);
-      return {company:companies[ci][0],logo:companies[ci][1],accent:companyMeta[ci][0],disclaimer:companyMeta[ci][1],website:websites[ci],socials:socials[ci],forename:sample?'Callum':$('forename').value.trim(),surname:sample?'Cowham':$('surname').value.trim(),position:sample?'Group Marketing Manager':$('position').value.trim(),hasMobile:sample?false:$('include-mobile').checked,phone:sample?'':$('phone').value.trim(),email:sample?'callum.cowham@applebridge.com':$('email').value.trim(),office:offices[oi][0],address:offices[oi][1]};
+      return {company:companies[ci][0],logo:companies[ci][1],accent:companyMeta[ci][0],disclaimer:companyMeta[ci][1],website:websites[ci],socials:socials[ci],forename:sample?'Joe':$('forename').value.trim(),surname:sample?'Blogs':$('surname').value.trim(),position:sample?'Manager':$('position').value.trim(),hasMobile:sample?false:$('include-mobile').checked,phone:sample?'':$('phone').value.trim(),email:sample?'joe.blogs@applebridge.com':$('email').value.trim(),office:offices[oi][0],address:offices[oi][1]};
     }
 
     function signatureHtml(d){
