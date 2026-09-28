@@ -169,7 +169,7 @@
         'Hughes Bros Construction Limited. Registered in England No. 05635308',
         'Registered Office: Plantation Cottage, Middleton St George, Darlington, United Kingdom, DL2 1RJ.'
       ]],
-      ['#007C58',[
+      ['#0072CE',[
         'This email and any files transmitted with it are confidential and may contain privileged material intended solely for the recipient(s) named above. If you are not the intended recipient of this email, please contact the sender immediately and destroy this email. Any views or opinions presented in this email are solely those of the author and might not represent those of Applebridge Utilities Ltd or any of its subsidiaries. Applebridge Utilities Ltd and its subsidiaries will not accept any liability in respect of any statements made in this email.',
         'Warning: Although Applebridge Utilities Ltd has taken reasonable precautions to ensure no viruses are present in this email, the company cannot accept responsibility for any loss or damage arising from the use of this email or attachments.',
         'Applebridge Utilities Ltd. Registered in England No. 13436554',
@@ -333,13 +333,20 @@
           children:[new Paragraph({spacing:{after:70},children:[new TextRun({text:'THE APPLEBRIDGE FAMILY',bold:true,color:muted,size:15,characterSpacing:20})]}),groupTable]
         })]})]
       });
+      const disclaimerBlock=new Table({
+        width:{size:9750,type:WidthType.DXA},columnWidths:[9750],layout:TableLayoutType.FIXED,borders:noBorders,
+        rows:[new TableRow({children:[new TableCell({
+          width:{size:9750,type:WidthType.DXA},margins:{top:80,right:180,bottom:0,left:180},borders:noBorders,
+          children:d.disclaimer.map(line=>new Paragraph({spacing:{before:0,after:45,line:240},children:[new TextRun({text:line,color:'718084',size:13})]}))
+        })]})]
+      });
       const document=new Document({
         styles:{default:{document:{run:{font:'Arial',color:ink,size:18},paragraph:{spacing:{after:0}}}}},
         sections:[{properties:{page:{margin:{top:360,right:360,bottom:360,left:360}}},children:[
           topTable,
           familyBlock,
           new Paragraph({spacing:{before:0,after:80},children:[new ImageRun({type:'gif',data:frameworkGif,transformation:{width:614,height:94},altText:{title:'Applebridge framework partners',description:'Applebridge framework partners',name:'Framework partners'}})]}),
-          ...d.disclaimer.map(line=>new Paragraph({spacing:{after:35,line:180},children:[new TextRun({text:line,color:'718084',size:13})]}))
+          disclaimerBlock
         ]}]
       });
       return Packer.toBlob(document);
